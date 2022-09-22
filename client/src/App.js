@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import axios from 'axios';
 
 function App() {
+  const baseUrl="http://localhost:81/lenguages/";
+
+  const peticionGet=async()=>{
+    await axios.get(baseUrl)
+    .then(response=>{
+      console.log(response.data);
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  useEffect(()=>{
+    peticionGet();
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{textAlign: 'center'}}>
     </div>
   );
 }
