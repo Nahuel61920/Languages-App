@@ -23,7 +23,8 @@ if($_POST['METHOD']=='POST'){
     $name=$_POST['name'];
     $launch=$_POST['launch'];
     $developer=$_POST['developer'];
-    $query="insert into lenguages(name, launch, developer) values ('$name', '$launch', '$developer')";
+    $img=$_POST['img'];
+    $query="insert into lenguages(name, launch, developer, img) values ('$name', '$launch', '$developer', '$img')";
     $queryAutoIncrement="select MAX(id) as id from lenguages";
     $resultado=metodoPost($query, $queryAutoIncrement);
     echo json_encode($resultado);
@@ -37,7 +38,8 @@ if($_POST['METHOD']=='PUT'){
     $name=$_POST['name'];
     $launch=$_POST['launch'];
     $developer=$_POST['developer'];
-    $query="UPDATE lenguages SET name='$name', launch='$launch', developer='$developer' WHERE id='$id'";
+    $img=$_POST['img'];
+    $query="UPDATE lenguages SET name='$name', launch='$launch', developer='$developer', img='$img' WHERE id=$id";
     $resultado=metodoPut($query);
     echo json_encode($resultado);
     header("HTTP/1.1 200 OK");
